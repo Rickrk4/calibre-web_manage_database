@@ -21,7 +21,8 @@ calibre-web:
       - ./calibre_sync_library.sh:/update_library
     ports:
       - 8083:8083
-    command: bash -c "./update_library /libri /books"
+    command: bash -c "curl https://raw.githubusercontent.com/Rickrk4/calibre-web_manage_database/main/calibre_sync_library.sh --output /update_library &&  chmod +x /update_library && ./update_library /books /database"
+
     #command: watch -n 10000 'calibredb add -r /books --with-library /database'
     restart: unless-stopped
 ```
